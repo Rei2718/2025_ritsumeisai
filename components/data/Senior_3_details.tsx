@@ -5,15 +5,15 @@ import { createClient } from '@/supabase/client';
 import type { Database } from '@/database.types';
 
 const supabase = createClient();
-type DataType = Database['public']['Tables']['todos']['Row'];
+type DataType = Database['public']['Tables']["senior_3_details"]["Row"]
 
-export default function TodoList() {
+export default function Senior_3_details() {
   const [data, setData] = useState<DataType[]>([]);
 
   useEffect(() => {
     async function loadData() {
       const { data, error } = await supabase
-        .from('todos')
+        .from('senior_3_details')
         .select();
       if (error) {
         console.error('Error loading data:', error);
@@ -32,7 +32,7 @@ export default function TodoList() {
         {
             event: '*',
             schema: 'public',
-            table: 'todos'
+            table: 'senior_3_details'
         },
         (payload) => console.log(payload)
       )
@@ -46,7 +46,16 @@ export default function TodoList() {
   return (
     <ul>
       {data.map(data => (
-        <li key={data.id}>{data.task}</li>
+        <div key={data.id}>
+          <li >{data.title}</li>
+          <li >{data.subtitle}</li>
+          <li >{data.description}</li>
+          <li >{data.adimageurl}</li>
+          <li >{data.venue}</li>
+          <li >{data.starttime}</li>
+          <li >{data.endtime}</li>
+          <li >{data.state}</li>
+        </div>
       ))}
     </ul>
   );

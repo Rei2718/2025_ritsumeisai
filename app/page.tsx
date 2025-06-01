@@ -1,10 +1,10 @@
-import TodoList from "@/components/TodoList";
+import { ModeToggle } from "@/components/ModeToggle";
 
 export default function Home() {
   return (
     <>
       <div>HELLO</div>
-      <TodoList />
+      <ModeToggle />
     </>
   );
 }
