@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Zen_Kurenaido } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import BackGround from "@/components/BackGround";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const zenKurenaido = Zen_Kurenaido({
+  variable: "--font-zen-kurenaido",
+  weight: "400",
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -27,20 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className="antialiased relative bg-background text-primary-foreground"
       >
-        <div className="fixed inset-0 z-0">
-          <BackGround />
-        </div>
-        <div className="relative z-10 min-h-screen pointer-events-none">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+        <div className={zenKurenaido.className}>
+          <div className="relative z-10 h-svh w-full pointer-events-none">
             {children}
-          </ThemeProvider>
+          </div>
         </div>
       </body>
     </html>
