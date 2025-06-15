@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Zen_Kurenaido } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const zenKurenaido = Zen_Kurenaido({

@@ -1,68 +1,18 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
-  --background: #ffffff;
-  --foreground: #0e0e0e;
-  --card: #f9fafb;
-  --card-foreground: #0e0e0e;
-  --popover: #ffffff;
-  --popover-foreground: #0e0e0e;
-  --primary: #dfff3c;
-  --primary-foreground: #0e0e0e;
-  --secondary: #e5e7eb;
-  --secondary-foreground: #0e0e0e;
-  --muted: #6b7280;
-  --muted-foreground: #6b7280;
-  --accent: #dfff3c;
-  --accent-foreground: #0e0e0e;
-  --destructive: #ff0000;
-  --destructive-foreground: #ffffff;
-  --border: #e5e7eb;
-  --input: #f9fafb;
-  --ring: #dfff3c;
-  --chart-1: #dfff3c;
-  --chart-2: #a3a3a3;
-  --chart-3: #0e0e0e;
-  --chart-4: #e5e7eb;
-  --chart-5: #f9fafb;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #0e0e0e;
-  --sidebar-primary: #dfff3c;
-  --sidebar-primary-foreground: #0e0e0e;
-  --sidebar-accent: #dfff3c;
-  --sidebar-accent-foreground: #0e0e0e;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #dfff3c;
-  --font-sans: sans-serif;
-  --font-serif: serif;
-  --font-mono: monospace;
-  --radius: 0.5rem;
-  --shadow-2xs: 0px 0px 10px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 0px 10px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0px 0px 10px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0px 0px 10px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0px 0px 10px 0px hsl(0 0% 0% / 0.10), 0px 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0px 0px 10px 0px hsl(0 0% 0% / 0.10), 0px 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0px 0px 10px 0px hsl(0 0% 0% / 0.10), 0px 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0px 0px 10px 0px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0;
-}
-
-.dark {
+  --primary: #dbb778;
   --background: #121212;
-  --foreground: #fafafa;
+  --foreground: #171717;
+  --secondary: #fafafa;
+  --muted: #282828;
   --card: #171717;
   --card-foreground: #fafafa;
   --popover: #171717;
   --popover-foreground: #fafafa;
-  --primary: #dbb778;
   --primary-foreground: #171717;
-  --secondary: #d1cdb2;
   --secondary-foreground: #171717;
-  --muted: #282828;
   --muted-foreground: #8a8a8a;
   --accent: #dbb778;
   --accent-foreground: #171717;
@@ -96,6 +46,7 @@
   --shadow-lg: 0px 0px 10px 0px hsl(0 0% 0% / 0.20), 0px 4px 6px -1px hsl(0 0% 0% / 0.20);
   --shadow-xl: 0px 0px 10px 0px hsl(0 0% 0% / 0.20), 0px 8px 10px -1px hsl(0 0% 0% / 0.20);
   --shadow-2xl: 0px 0px 10px 0px hsl(0 0% 0% / 0.50);
+  --tracking-normal: 0;
 }
 
 @theme inline {
@@ -156,10 +107,6 @@
   --tracking-wide: calc(var(--tracking-normal) + 0.025em);
   --tracking-wider: calc(var(--tracking-normal) + 0.05em);
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
-}
-
-body {
-  letter-spacing: var(--tracking-normal);
 }
 
 @layer base {
