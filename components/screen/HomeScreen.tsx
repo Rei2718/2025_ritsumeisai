@@ -1,16 +1,5 @@
 import Link from 'next/link';
-import { Londrina_Solid, Londrina_Shadow } from 'next/font/google';
 import { BsCalendar3, BsMap, BsMegaphone, BsPeople } from "react-icons/bs";
-
-const londrinaSolid = Londrina_Solid({
-  subsets: ['latin'],
-  weight: ['400']
-});
-
-const londrinaShadow = Londrina_Shadow({
-  subsets: ['latin'],
-  weight: ['400']
-});
 
 export default function HomeScreen() {
   return (
@@ -21,12 +10,6 @@ export default function HomeScreen() {
       <section className="relative flex flex-col items-center w-full h-svh text-center">
         {/* メインコンテンツ */}
         <div className="relative flex flex-col items-center justify-center flex-grow z-10">
-          {/* タイトル */}
-          <div className="px-2 text-6xl md:text-7xl lg:text-8xl">
-            <h1 className={londrinaSolid.className}>THE 30TH</h1>
-            <h2 className={londrinaShadow.className}>TESTTEXT</h2>
-          </div>
-
           {/* 日付 */}
           <p className="mt-4 mb-1 text-lg md:text-2xl lg:text-3xl">
             2025.7.5 (Sat) - 2025.7.6 (Sun)
@@ -37,9 +20,9 @@ export default function HomeScreen() {
         </div>
 
         {/* スタートボタン (画面下部に配置) */}
-        <div className="w-9/12 max-w-md mx-auto z-10 mb-24">
+        <div className="z-10 w-7/12 mb-24">
           <Link href="/start">
-            <button className="bg-primary backdrop-blur-sm shadow-md py-3 px-4 w-full text-lg rounded-full hover:bg-primary/80 transition-colors">
+            <button className="bg-primary h-16 max-w-md mx-auto backdrop-blur-sm shadow-md py-3 px-4 w-full text-lg rounded-full hover:bg-primary/80 transition-colors">
               GET STARTED →
             </button>
           </Link>
