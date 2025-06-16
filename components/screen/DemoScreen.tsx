@@ -1,9 +1,9 @@
-import Timeline from '../TimeLine/ui/TimeLine';
+import TimeLine from "../timeLine/TimeLine";
 
 export default function DemoScreen() {
   return (
     <section>
-      <Timeline />
+      <TimeLine />
     </section>
   )
 }
