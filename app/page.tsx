@@ -1,14 +1,6 @@
 import HomeScreen from "@/components/screen/HomeScreen";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   BsHouseDoor,
   BsHouseDoorFill,
   BsGrid,
@@ -21,83 +13,58 @@ import {
 export default function Home() {
   return (
     <Tabs defaultValue="home" className="h-svh w-svw rounded-2xl bg-background">
-      {/* 各タブのコンテンツ */}
       <TabsContent value="home" className="w-full flex items-center justify-center">
         <HomeScreen />
       </TabsContent>
-      <TabsContent value="new" className="w-full flex items-center justify-center">
+      <TabsContent value="new" className="h-full w-full flex items-center justify-center">
         <HomeScreen />
       </TabsContent>
-      <TabsContent value="radio" className="w-full flex items-center justify-center">
+      <TabsContent value="radio" className="h-full w-full flex items-center justify-center">
         <HomeScreen />
       </TabsContent>
-      <TabsContent value="library" className="w-full flex items-center justify-center">
+      <TabsContent value="library" className="h-full w-full flex items-center justify-center">
         <HomeScreen />
       </TabsContent>
-      <TabsContent value="search" className="w-full flex items-center justify-center">
+      <TabsContent value="search" className="h-full w-full flex items-center justify-center">
         <HomeScreen />
       </TabsContent>
 
-      {/* アイコンサイズなどの共通設定 */}
-      <TabsList
-        className={`
-          w-[87%] max-w-xl mx-auto
-          fixed bottom-3 left-1/2 -translate-x-1/2 z-20
-          flex items-center pointer-events-auto bg-transparent p-0
-          [&_button]:flex [&_button]:items-center [&_button]:justify-center
-          [&_button]:rounded-full [&_button]:transition-all
-          [&_button]:duration-200 [&_button]:ease-in-out
-          [&_button]:text-primary [&_button]:data-[state=active]:text-secondary
-          [&_button]:w-14 [&_button]:h-14
-        `}
-      >
-        <div className="flex flex-1 items-center justify-around p-1 rounded-full bg-muted backdrop-blur-lg">
-          <TabsTrigger value="home" className="group">
-            <BsHouseDoor className="h-7 w-7 group-data-[state=active]:hidden" />
-            <BsHouseDoorFill className="h-7 w-7 hidden group-data-[state=active]:block" />
+      <TabsList className="w-11/12 max-w-lg mx-auto fixed bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center pointer-events-auto bg-transparent p-0">
+        <div className="flex flex-1 flex-row items-center justify-around p-1 rounded-full bg-muted backdrop-blur-lg xs:w-10 xs:h-10 xs:h-10 sm:w-15 sm:h-15 md:w-12 md:h-12 lg:w-13 lg:h-13  xl:w-14 xl:h-14">
+          <TabsTrigger
+            value="home"
+            className="group flex flex-col items-center justify-center rounded-full transition-all duration-200 ease-in-out text-primary data-[state=active]:text-secondary"
+          >
+            <BsHouseDoor className="h-6 w-6 group-data-[state=active]:hidden" />
+            <BsHouseDoorFill className="h-6 w-6 hidden group-data-[state=active]:block" />
           </TabsTrigger>
-
-          <TabsTrigger value="new" className="group">
-            <BsGrid className="h-7 w-7 group-data-[state=active]:hidden" />
-            <BsGridFill className="h-7 w-7 hidden group-data-[state=active]:block" />
+          <TabsTrigger
+            value="new"
+            className="group flex flex-col items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-200 ease-in-out text-primary data-[state=active]:text-secondary"
+          >
+            <BsGrid className="h-6 w-6 group-data-[state=active]:hidden" />
+            <BsGridFill className="h-6 w-6 hidden group-data-[state=active]:block" />
           </TabsTrigger>
-
-          <TabsTrigger value="radio" className="group">
-            <BsBroadcast className="h-7 w-7" />
+          <TabsTrigger
+            value="radio"
+            className="group flex flex-col items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-200 ease-in-out text-primary data-[state=active]:text-secondary"
+          >
+            <BsBroadcast className="h-6 w-6" />
           </TabsTrigger>
-
-          <TabsTrigger value="library" className="group">
-            <BsMusicNoteList className="h-7 w-7" />
+          <TabsTrigger
+            value="library"
+            className="group flex flex-col items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-200 ease-in-out text-primary data-[state=active]:text-secondary"
+          >
+            <BsMusicNoteList className="h-6 w-6" />
           </TabsTrigger>
         </div>
-
-        <div className="w-6 flex-shrink-0" />
-
-        <div className="flex p-1 rounded-full bg-muted backdrop-blur-lg">
-          {/* Search タブは asChild を使って内包ボタンを一つだけに */}
-          <TabsTrigger value="search" asChild>
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <BsSearch className="h-7 w-7" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                align="end"
-                className="
-                  bottom-4
-                  -right-1
-                  w-48
-                  bg-muted
-                "
-              >
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+        <div className="w-3 flex-shrink-0" />
+        <div className="p-1 rounded-full bg-muted backdrop-blur-lg">
+          <TabsTrigger
+            value="search"
+            className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-200 ease-in-out text-primary data-[state=active]:text-secondary"
+          >
+            <BsSearch className="h-6 w-6" />
           </TabsTrigger>
         </div>
       </TabsList>
