@@ -38,7 +38,7 @@ export default function Home() {
         <HomeScreen />
       </TabsContent>
 
-      {/* アイコンサイズなどの共通設定をここで一括定義 */}
+      {/* アイコンサイズなどの共通設定 */}
       <TabsList
         className={`
           w-[87%] max-w-xl mx-auto
@@ -56,13 +56,16 @@ export default function Home() {
             <BsHouseDoor className="h-7 w-7 group-data-[state=active]:hidden" />
             <BsHouseDoorFill className="h-7 w-7 hidden group-data-[state=active]:block" />
           </TabsTrigger>
+
           <TabsTrigger value="new" className="group">
             <BsGrid className="h-7 w-7 group-data-[state=active]:hidden" />
             <BsGridFill className="h-7 w-7 hidden group-data-[state=active]:block" />
           </TabsTrigger>
+
           <TabsTrigger value="radio" className="group">
             <BsBroadcast className="h-7 w-7" />
           </TabsTrigger>
+
           <TabsTrigger value="library" className="group">
             <BsMusicNoteList className="h-7 w-7" />
           </TabsTrigger>
@@ -71,29 +74,31 @@ export default function Home() {
         <div className="w-6 flex-shrink-0" />
 
         <div className="flex p-1 rounded-full bg-muted backdrop-blur-lg">
-          <DropdownMenu>
-            <DropdownMenuTrigger value="search" className="group">
-              <BsSearch className="h-7 w-7" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              side="top"             // 上方向に展開
-              align="end"            // 右寄せ
-              className="
-                bottom-4            /* ビューポート下から 3rem 上 */
-                right-0              /* ビューポート右から 1rem 内側 */
-                w-48                 /* 幅 12rem */
-                h-auto               /* 高さは中身に合わせる */
-                bg-muted
-              "
-            >
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuItem>Subscription</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {/* Search タブは asChild を使って内包ボタンを一つだけに */}
+          <TabsTrigger value="search" asChild>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <BsSearch className="h-7 w-7" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                side="top"
+                align="end"
+                className="
+                  bottom-4
+                  -right-1
+                  w-48
+                  bg-muted
+                "
+              >
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Billing</DropdownMenuItem>
+                <DropdownMenuItem>Team</DropdownMenuItem>
+                <DropdownMenuItem>Subscription</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </TabsTrigger>
         </div>
       </TabsList>
     </Tabs>
