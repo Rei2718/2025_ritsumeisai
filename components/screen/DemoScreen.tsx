@@ -1,9 +1,7 @@
-import TimeLine from "../timeLine/TimeLine";
-
 export default function DemoScreen() {
   return (
-    <section>
-      <TimeLine />
-    </section>
-  )
+    <main className="flex flex-col items-center w-full bg-background text-secondary">
+      DEMO
+    </main>
+  );
 }

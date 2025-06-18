@@ -25,7 +25,7 @@ export default function RootLayout({
         className="antialiased relative bg-background text-primary-foreground"
       >
         <div className={zenKurenaido.className}>
-          <div className="relative z-10 h-svh w-full pointer-events-none">
+          <div className="relative z-10 h-svh w-svw pointer-events-none">
             {children}
           </div>
         </div>
