@@ -1,6 +1,13 @@
-import DemoScreen from "@/components/screen/DemoScreen";
 import HomeScreen from "@/components/screen/HomeScreen";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   BsHouseDoor,
   BsHouseDoorFill,
@@ -12,99 +19,82 @@ import {
 } from "react-icons/bs";
 
 export default function Home() {
-  // --- スタイルの定義 ---
-
-  // ボタンのレスポンシブな正方形サイズ
-  const triggerSize = "w-14 h-14 md:w-16 md:h-16";
-
-  // 左側4つのタブ（Home, Newなど）のスタイル
-  const mainTriggerClassName = `
-    group
-    flex flex-col items-center justify-center gap-1
-    ${triggerSize}
-    rounded-full
-    transition-all duration-200 ease-in-out
-    text-gray-500
-    dark:text-gray-400
-    /* アクティブ時の背景ハイライトは指定しない */
-    data-[state=active]:text-red-500
-  `;
-
-  // 右側の検索タブのスタイル
-  const searchTriggerClassName = `
-    group
-    flex items-center justify-center
-    ${triggerSize}
-    rounded-full
-    transition-all duration-200 ease-in-out
-    text-gray-600
-    dark:text-gray-400
-    /* アクティブ時の背景ハイライトは指定しない */
-    data-[state=active]:text-red-500
-  `;
-
-  // アイコンのスタイル
-  const iconClassName = "h-6 w-6";
-  const activeIconClassName = "hidden group-data-[state=active]:block";
-  const inactiveIconClassName = "group-data-[state=active]:hidden";
-
-  // テキストラベルのスタイル
-  const spanClassName = "text-xs font-medium";
-
-  // すりガラス風の共通背景スタイル
-  const sharedBackgroundClassName = `
-    bg-gray-200/60
-    dark:bg-gray-800/70
-    backdrop-blur-lg
-    border border-white/30 dark:border-black/30
-  `;
-
   return (
-    <Tabs defaultValue="home" className="h-svh w-svw border rounded-2xl">
-      {/* ===== タブコンテンツ (変更なし) ===== */}
-      <TabsContent value="home" className="h-full w-full overflow-y-auto pointer-events-auto custom-scrollbar"><HomeScreen /></TabsContent>
-      <TabsContent value="new" className="h-full w-full flex items-center justify-center"><DemoScreen /></TabsContent>
-      <TabsContent value="radio" className="h-full w-full flex items-center justify-center"><DemoScreen /></TabsContent>
-      <TabsContent value="library" className="h-full w-full flex items-center justify-center"><DemoScreen /></TabsContent>
-      <TabsContent value="search" className="h-full w-full flex items-center justify-center"><DemoScreen /></TabsContent>
+    <Tabs defaultValue="home" className="h-svh w-svw rounded-2xl bg-background">
+      {/* 各タブのコンテンツ */}
+      <TabsContent value="home" className="w-full flex items-center justify-center">
+        <HomeScreen />
+      </TabsContent>
+      <TabsContent value="new" className="w-full flex items-center justify-center">
+        <HomeScreen />
+      </TabsContent>
+      <TabsContent value="radio" className="w-full flex items-center justify-center">
+        <HomeScreen />
+      </TabsContent>
+      <TabsContent value="library" className="w-full flex items-center justify-center">
+        <HomeScreen />
+      </TabsContent>
+      <TabsContent value="search" className="w-full flex items-center justify-center">
+        <HomeScreen />
+      </TabsContent>
 
-      {/* ===== タブナビゲーション (変更なし) ===== */}
-      <TabsList className="w-11/12 max-w-lg mx-auto fixed bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center pointer-events-auto bg-transparent h-auto p-0">
-        
-        <div
-          className={`
-            flex flex-1 flex-row items-center justify-around
-            p-1 rounded-full ${sharedBackgroundClassName}
-          `}
-        >
-          <TabsTrigger value="home" className={mainTriggerClassName}>
-            <BsHouseDoor className={`${iconClassName} ${inactiveIconClassName}`} />
-            <BsHouseDoorFill className={`${iconClassName} ${activeIconClassName}`} />
-            <span className={spanClassName}>Home</span>
+      {/* アイコンサイズなどの共通設定をここで一括定義 */}
+      <TabsList
+        className={`
+          w-[87%] max-w-xl mx-auto
+          fixed bottom-3 left-1/2 -translate-x-1/2 z-20
+          flex items-center pointer-events-auto bg-transparent p-0
+          [&_button]:flex [&_button]:items-center [&_button]:justify-center
+          [&_button]:rounded-full [&_button]:transition-all
+          [&_button]:duration-200 [&_button]:ease-in-out
+          [&_button]:text-primary [&_button]:data-[state=active]:text-secondary
+          [&_button]:w-14 [&_button]:h-14
+        `}
+      >
+        <div className="flex flex-1 items-center justify-around p-1 rounded-full bg-muted backdrop-blur-lg">
+          <TabsTrigger value="home" className="group">
+            <BsHouseDoor className="h-7 w-7 group-data-[state=active]:hidden" />
+            <BsHouseDoorFill className="h-7 w-7 hidden group-data-[state=active]:block" />
           </TabsTrigger>
-          <TabsTrigger value="new" className={mainTriggerClassName}>
-            <BsGrid className={`${iconClassName} ${inactiveIconClassName}`} />
-            <BsGridFill className={`${iconClassName} ${activeIconClassName}`} />
-            <span className={spanClassName}>New</span>
+          <TabsTrigger value="new" className="group">
+            <BsGrid className="h-7 w-7 group-data-[state=active]:hidden" />
+            <BsGridFill className="h-7 w-7 hidden group-data-[state=active]:block" />
           </TabsTrigger>
-          <TabsTrigger value="radio" className={mainTriggerClassName}>
-            <BsBroadcast className={iconClassName} />
-            <span className={spanClassName}>Radio</span>
+          <TabsTrigger value="radio" className="group">
+            <BsBroadcast className="h-7 w-7" />
           </TabsTrigger>
-          <TabsTrigger value="library" className={mainTriggerClassName}>
-            <BsMusicNoteList className={iconClassName} />
-            <span className={spanClassName}>Library</span>
+          <TabsTrigger value="library" className="group">
+            <BsMusicNoteList className="h-7 w-7" />
           </TabsTrigger>
         </div>
 
-        <div className="w-3 flex-shrink-0" />
+        <div className="w-6 flex-shrink-0" />
 
-        <div className={`p-1 rounded-full ${sharedBackgroundClassName}`}>
-          <TabsTrigger value="search" className={searchTriggerClassName}>
-            <BsSearch className={iconClassName} />
-          </TabsTrigger>
+        <div className="flex p-1 rounded-full bg-muted backdrop-blur-lg">
+          <DropdownMenu>
+            <DropdownMenuTrigger value="search" className="group">
+              <BsSearch className="h-7 w-7" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              side="top"             // 上方向に展開
+              align="end"            // 右寄せ
+              className="
+                bottom-4            /* ビューポート下から 3rem 上 */
+                right-0              /* ビューポート右から 1rem 内側 */
+                w-48                 /* 幅 12rem */
+                h-auto               /* 高さは中身に合わせる */
+                bg-muted
+              "
+            >
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem>Billing</DropdownMenuItem>
+              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuItem>Subscription</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-
       </TabsList>
     </Tabs>
   );
