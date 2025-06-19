@@ -27,7 +27,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0%", "end 110%"],
+    offset: ["start 0%", "end 100%"],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
@@ -53,8 +53,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             key={index}
             className="flex justify-start pt-10 md:pt-20 md:gap-10"
           >
-            <div className="flex flex-col md:flex-row items-center self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[#121212] flex items-center justify-center border-2 border-[#282828] z-20">
+            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-[#121212] flex items-center justify-center border-2 border-[#282828]">
                 <div className="h-4 w-4 rounded-full bg-[#dbb778] border border-[#dbb778] p-2" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl font-bold text-[#dbb778] min-w-[120px]">
@@ -94,7 +94,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent from-[0%] via-[#282828] to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] z-10"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent from-[0%] via-[#282828] to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
             style={{
@@ -108,68 +108,3 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     </div>
   );
 };
-
-export function TimelineDemo() {
-  const data = [
-    {
-      time: "09:00",
-      title: "Registration & Welcome Coffee",
-      description: "Check-in and network with fellow attendees while enjoying complimentary refreshments. Pick up your conference materials and event swag.",
-      labels: ["Registration", "Networking", "Coffee"]
-    },
-    {
-      time: "09:30",
-      title: "Opening Keynote: The Future of Technology",
-      description: "Join our distinguished speaker as they explore emerging trends in artificial intelligence, machine learning, and their impact on various industries.",
-      labels: ["Keynote", "AI/ML", "Future Tech"]
-    },
-    {
-      time: "10:30",
-      title: "Panel Discussion: Digital Transformation",
-      description: "Industry experts discuss the challenges and opportunities of digital transformation in today's rapidly evolving business landscape.",
-      labels: ["Panel", "Digital Transform", "Business"]
-    },
-    {
-      time: "11:30",
-      title: "Coffee Break & Networking",
-      description: "Take a break to recharge and connect with other participants. Light refreshments will be served in the exhibition area.",
-      labels: ["Break", "Networking", "Refreshments"]
-    },
-    {
-      time: "12:00",
-      title: "Workshop: Hands-on Development",
-      description: "Interactive workshop where participants will build a real-world application using modern development frameworks and best practices.",
-      labels: ["Workshop", "Development", "Hands-on"]
-    },
-    {
-      time: "13:30",
-      title: "Lunch & Networking Session",
-      description: "Enjoy a delicious lunch while continuing conversations with speakers and attendees. Great opportunity for business connections.",
-      labels: ["Lunch", "Networking", "Business"]
-    },
-    {
-      time: "14:30",
-      title: "Technical Deep Dive: System Architecture",
-      description: "Explore advanced system architecture patterns, scalability considerations, and performance optimization techniques for modern applications.",
-      labels: ["Technical", "Architecture", "Performance"]
-    },
-    {
-      time: "15:30",
-      title: "Lightning Talks: Innovation Showcase",
-      description: "Short, impactful presentations from startup founders and innovators sharing their latest projects and breakthrough technologies.",
-      labels: ["Lightning Talks", "Innovation", "Startups"]
-    },
-    {
-      time: "16:30",
-      title: "Closing Remarks & Networking",
-      description: "Wrap up the event with final thoughts, announcements for future events, and extended networking time with all participants.",
-      labels: ["Closing", "Networking", "Announcements"]
-    }
-  ];
-
-  return (
-    <div className="relative w-full overflow-clip">
-      <Timeline data={data} />
-    </div>
-  );
-}

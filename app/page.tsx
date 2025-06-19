@@ -1,5 +1,6 @@
 import HomeScreen from "@/components/screen/HomeScreen";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TimelineDemo } from '../components/screen/DemoScreen';
 import {
   BsHouseDoor,
   BsHouseDoorFill,
@@ -16,8 +17,8 @@ export default function Home() {
       <TabsContent value="home" className="w-full flex items-center justify-center">
         <HomeScreen />
       </TabsContent>
-      <TabsContent value="new" className="h-full w-full flex items-center justify-center">
-        <HomeScreen />
+      <TabsContent value="new" className="w-full">
+        <TimelineDemo />
       </TabsContent>
       <TabsContent value="radio" className="h-full w-full flex items-center justify-center">
         <HomeScreen />
